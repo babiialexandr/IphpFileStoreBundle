@@ -14,27 +14,8 @@
 
     "require": {
         "php": "^5.5 || ^7.0",
-        "symfony/framework-bundle": "^2.8|^3.0"
+        "symfony/framework-bundle": "^3.4|^4.0"
     },
-
-    "require-dev": {
-        "symfony/form": "^2.8|^3.0",
-        "symfony/twig-bundle": "^2.8|^3.0",
-
-        "symfony/class-loader": "@stable",
-        "symfony/finder": "@stable",
-        "symfony/browser-kit": "@stable",
-        "symfony/css-selector": "@stable",
-        "symfony/validator": "@stable",
-        "symfony/process": "@stable",
-        "symfony/yaml": "@stable",
-        "sensio/framework-extra-bundle": "@stable",
-        "doctrine/doctrine-bundle": "@stable",
-        "doctrine/orm": "@stable",
-        "mikey179/vfsStream": "@stable",
-        "codeclimate/php-test-reporter": "dev-master"
-    },
-
     "autoload": {
         "psr-0": {
             "Iphp\\FileStoreBundle": ""

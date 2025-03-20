@@ -2,7 +2,6 @@
 
 namespace Iphp\FileStoreBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCommand;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineEntityGenerator;
@@ -10,10 +9,17 @@ use Sensio\Bundle\GeneratorBundle\Command\Helper\DialogHelper;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Console\Command\Command;
 
 
-class RepairFileDataCommand extends ContainerAwareCommand
+class RepairFileDataCommand extends Command implements ContainerAwareInterface
 {
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
 
     protected function configure()
     {
@@ -124,5 +130,15 @@ class RepairFileDataCommand extends ContainerAwareCommand
         }
 
         $this->getEntityManager()->flush();
+    }
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
+    public function getContainer(): ContainerInterface
+    {
+        return $this->container;
     }
 }

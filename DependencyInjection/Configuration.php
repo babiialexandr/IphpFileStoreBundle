@@ -19,9 +19,13 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $tb = new TreeBuilder();
-        $root = $tb->root('iphp_file_store');
-
+        $builder = new TreeBuilder('iphp_file_store');
+        if (method_exists($builder, 'getRootNode')) {
+            $root = $builder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $root = $builder->root('iphp_file_store');
+        }
         $root
             ->children()
                 ->scalarNode('db_driver')->defaultValue('orm')->end()
