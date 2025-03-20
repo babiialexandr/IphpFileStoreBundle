@@ -83,6 +83,6 @@ class Configuration implements ConfigurationInterface
             ->end()
         ;
 
-        return $tb;
+        return $builder;
     }
 }
